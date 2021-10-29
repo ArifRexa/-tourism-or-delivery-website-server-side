@@ -23,6 +23,7 @@ async function run() {
         await client.connect();
         const database = client.db("theme_park");
         const rideCollection = database.collection("rides");
+        const ordersCollection = database.collection("bookings");
         // console.log("database connected");
         
 
@@ -33,12 +34,32 @@ async function run() {
             res.send(rides);
         })
 
+        
+
         //Get Single API
         app.get("/rides/:id", async(req, res) => {
             const id = req.params.id;
             const query = {_id: ObjectId(id)};
             const result = await rideCollection.findOne(query);
             res.json(result);
+        })
+
+
+        //Bookings POST API
+        app.post("/bookings", async(req, res) => {
+            const booking = req.body;
+            console.log("hit the post api", booking);
+            const result = await ordersCollection.insertOne(booking);
+            console.log(result);
+            res.json(result)
+        })
+
+        //Bookings GET API
+
+        app.get("/bookings", async(req, res) => {
+            const cursor = ordersCollection.find({});
+            const booking = await cursor.toArray();
+            res.send(booking)
         })
 
         app.get("/check", async(req, res) => {
