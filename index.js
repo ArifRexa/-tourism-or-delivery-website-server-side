@@ -34,8 +34,6 @@ async function run() {
 
         app.get("/check", async(req, res) => {
             console.log("checked");
-            // const cursor = rideCollection.find({});
-            // const rides = await cursor.toArray();
             res.send("this check is running");
         })
     }
@@ -48,7 +46,7 @@ run().catch(console.dir);
 
 
 app.get("/", (req, res) => {
-    res.send("Server is running too");
+    res.send("Server is running well");
 })
 
 app.listen(port, () => {
