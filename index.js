@@ -44,6 +44,15 @@ async function run() {
             res.json(result);
         })
 
+        //POST Ride API
+        app.post("/rides", async(req, res) => {
+            const ride = req.body;
+            console.log("hit the post api", ride);
+            const result = await rideCollection.insertOne(ride);
+            console.log(result);
+            res.json(result)
+        })
+
 
         //Bookings POST API
         app.post("/bookings", async(req, res) => {
@@ -53,6 +62,8 @@ async function run() {
             console.log(result);
             res.json(result)
         })
+
+        
 
         //Bookings GET API
 
