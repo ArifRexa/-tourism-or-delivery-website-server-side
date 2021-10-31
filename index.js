@@ -56,6 +56,9 @@ async function run() {
 
         //Bookings POST API
         app.post("/bookings", async(req, res) => {
+            const doc = {
+                status: "Pending"
+            }
             const booking = req.body;
             console.log("hit the post api", booking);
             const result = await ordersCollection.insertOne(booking);
