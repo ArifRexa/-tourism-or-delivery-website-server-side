@@ -47,9 +47,9 @@ async function run() {
         //POST Ride API
         app.post("/rides", async(req, res) => {
             const ride = req.body;
-            console.log("hit the post api", ride);
+            // console.log("hit the post api", ride);
             const result = await rideCollection.insertOne(ride);
-            console.log(result);
+            // console.log(result);
             res.json(result)
         })
 
@@ -57,9 +57,9 @@ async function run() {
         //Bookings POST API
         app.post("/bookings", async(req, res) => {
             const booking = req.body;
-            console.log("hit the post api", booking);
+            // console.log("hit the post api", booking);
             const result = await ordersCollection.insertOne(booking);
-            console.log(result);
+            // console.log(result);
             res.json(result)
         })
 
@@ -96,7 +96,7 @@ async function run() {
 
             };
             const result = await ordersCollection.updateOne(filter, updateDoc, options)
-            console.log("updating user",req);
+            // console.log("updating user",req);
             res.json(result)
         })
 
