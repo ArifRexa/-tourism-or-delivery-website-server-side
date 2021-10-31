@@ -62,6 +62,7 @@ async function run() {
             const booking = req.body;
             console.log("hit the post api", booking);
             const result = await ordersCollection.insertOne(booking);
+            const result = await ordersCollection.insertOne(doc);
             console.log(result);
             res.json(result)
         })
